@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Practica04 | Practica Jekyll de Rodrigo</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Practica04" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="iaw-practica4 En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon" />
+<meta property="og:description" content="iaw-practica4 En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon" />
+<link rel="canonical" href="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica04.html" />
+<meta property="og:url" content="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica04.html" />
+<meta property="og:site_name" content="Practica Jekyll de Rodrigo" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-03-09T13:15:34-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Practica04" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-03-09T13:15:34-06:00","datePublished":"2023-03-09T13:15:34-06:00","description":"iaw-practica4 En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon","headline":"Practica04","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica04.html"},"url":"https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica04.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/iaw-jeykill/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/feed.xml" title="Practica Jekyll de Rodrigo" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/iaw-jeykill/">Practica Jekyll de Rodrigo</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/iaw-jeykill/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Practica04</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-03-09T13:15:34-06:00" itemprop="datePublished">Mar 9, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>iaw-practica4
+En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon</p>
+
+<p>Para esta practica vamos a necesitar:</p>
+
+<p>La IP publica de nuestra instancia EC2.</p>
+
+<p>Un correo electronico: en mi caso he utilizado “rodalmar821@gmail.com”.</p>
+
+<p>Registrar un nombre de dominio: He utilizado la página web “N”O-IP”.</p>
+
+<p>Una vez reunidos estos requisitos, deberemos de instalar Certbot en la instancia de EC2 por medio de comandos:</p>
+
+<p>set -x</p>
+
+<p>#Realizamos la instalación y actualización de snapd.
+sudo snap install core</p>
+
+<p>sudo snap refresh core</p>
+
+<p>#Eliminamos si existiene alguna instalación previa de certbot con apt.
+sudo apt-get remove certbot</p>
+
+<p>#Instalamos el cliente de Certbot con snapd y automatizamos el proceso.
+sudo certbot –apache -m rodalmar821@gmail.com –agree-tos –no-eff-email -d iaw-practica4.ddns.net</p>
+
+<p>#Creamos una alias para el comando certbot.
+sudo ln -s /snap/bin/certbot /usr/bin/certbot</p>
+
+<h1 id="obtenemos-el-certificado-y-configuramos-el-servidor-web-apache">Obtenemos el certificado y configuramos el servidor Web Apache.</h1>
+<p>#De no haber automatizado el script de arriba tendremos que poner nuestro correo a mano, indicar “Yes” en la primera opción, indicar “No” en la segunda y poner el dominio “iaw-practica4.ddns.net” al final. Pero si lo automatizamos no sera necesario.
+sudo certbot –apache</p>
+
+<h1 id="lo-ajustamos-para-que-renueve-el-dominio-cuando-se-vaya-a-agotar-el-tiempo">Lo ajustamos para que renueve el dominio cuando se vaya a agotar el tiempo</h1>
+<p>systemctl list-timers
+Al terminar nos dará el certificado con la dirección del dominio de esta manera:</p>
+
+<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica4/Certificado_web1.png" alt="Error" class="center" width="500px" /></p>
+
+<p>Para llegar a nuestro objetivo final, tendremos que tomar la dirección que nos dá junto al cerficiado y con ella dirigírnos a la aplicación web instalada en nuestro EC2.</p>
+
+<p>Si todos los pasos que hemos estado siguiendo se han realizado correctamente, nos debería indicar que la página es segura en el candado a la izquieda de la dirección.</p>
+
+<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica4/Certificado_web_2.png" alt="Error" class="center" width="500px" /></p>
+
+<p>La dirección del dominio que hemos habilitado es “iaw-practica4.ddns.net”</p>
+
+  </div><a class="u-url" href="/iaw-jeykill/jekyll/update/2023/03/09/practica04.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/iaw-jeykill/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Practica Jekyll de Rodrigo</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Practica Jekyll de Rodrigo</li><li><a class="u-email" href="mailto:rodalmar821@gmail.com">rodalmar821@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rodalmar82"><svg class="svg-icon"><use xlink:href="/iaw-jeykill/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rodalmar82</span></a></li><li><a href="https://www.twitter.com/EvilAFM"><svg class="svg-icon"><use xlink:href="/iaw-jeykill/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">EvilAFM</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>En esta página web voy a colgar algunas de las prácticas que hemos realizado durante este curso.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/" rel="alternate" type="text/html" /><updated>2023-03-09T14:55:51-06:00</updated><id>https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/feed.xml</id><title type="html">Practica Jekyll de Rodrigo</title><subtitle>En esta página web voy a colgar algunas de las prácticas que hemos realizado durante este curso.</subtitle><entry><title type="html">Practica03</title><link href="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica02.html" rel="alternate" type="text/html" title="Practica03" /><published>2023-03-09T13:15:34-06:00</published><updated>2023-03-09T13:15:34-06:00</updated><id>https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica02</id><content type="html" xml:base="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica02.html"><![CDATA[<h1 id="iaw-practica02">iaw-practica02</h1>
+I"�(<h1 id="iaw-practica02">iaw-practica02</h1>
 <h2 id="instalación-de-lamp-sack-en-rhel-por-rodrigo-alarcón-márquez">Instalación de LAMP sack en RHEL por Rodrigo Alarcón Márquez</h2>
 
 <h2 id="1º-paso-creación-de-estancia-en-amazon">1º Paso: Creación de Estancia en Amazon</h2>
@@ -153,49 +153,5 @@ dnf <span class="nb">install </span>php-zip php-json php-fpm <span class="nt">-y
 
 <p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica3/Captura9RH.png" alt="Error" class="center" width="400px" /></p>
 
-<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica3/Captura10RH.png" alt="Error" class="center" width="400px" /></p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[iaw-practica02 Instalación de LAMP sack en RHEL por Rodrigo Alarcón Márquez]]></summary></entry><entry><title type="html">Practica04</title><link href="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica04.html" rel="alternate" type="text/html" title="Practica04" /><published>2023-03-09T13:15:34-06:00</published><updated>2023-03-09T13:15:34-06:00</updated><id>https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica04</id><content type="html" xml:base="https://rodalmar82.github.io/iaw-jeykill//iaw-jeykill/jekyll/update/2023/03/09/practica04.html"><![CDATA[<p>iaw-practica4
-En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon</p>
-
-<p>Para esta practica vamos a necesitar:</p>
-
-<p>La IP publica de nuestra instancia EC2.</p>
-
-<p>Un correo electronico: en mi caso he utilizado “rodalmar821@gmail.com”.</p>
-
-<p>Registrar un nombre de dominio: He utilizado la página web “N”O-IP”.</p>
-
-<p>Una vez reunidos estos requisitos, deberemos de instalar Certbot en la instancia de EC2 por medio de comandos:</p>
-
-<p>set -x</p>
-
-<p>#Realizamos la instalación y actualización de snapd.
-sudo snap install core</p>
-
-<p>sudo snap refresh core</p>
-
-<p>#Eliminamos si existiene alguna instalación previa de certbot con apt.
-sudo apt-get remove certbot</p>
-
-<p>#Instalamos el cliente de Certbot con snapd y automatizamos el proceso.
-sudo certbot –apache -m rodalmar821@gmail.com –agree-tos –no-eff-email -d iaw-practica4.ddns.net</p>
-
-<p>#Creamos una alias para el comando certbot.
-sudo ln -s /snap/bin/certbot /usr/bin/certbot</p>
-
-<h1 id="obtenemos-el-certificado-y-configuramos-el-servidor-web-apache">Obtenemos el certificado y configuramos el servidor Web Apache.</h1>
-<p>#De no haber automatizado el script de arriba tendremos que poner nuestro correo a mano, indicar “Yes” en la primera opción, indicar “No” en la segunda y poner el dominio “iaw-practica4.ddns.net” al final. Pero si lo automatizamos no sera necesario.
-sudo certbot –apache</p>
-
-<h1 id="lo-ajustamos-para-que-renueve-el-dominio-cuando-se-vaya-a-agotar-el-tiempo">Lo ajustamos para que renueve el dominio cuando se vaya a agotar el tiempo</h1>
-<p>systemctl list-timers
-Al terminar nos dará el certificado con la dirección del dominio de esta manera:</p>
-
-<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica4/Certificado_web1.png" alt="Error" class="center" width="500px" /></p>
-
-<p>Para llegar a nuestro objetivo final, tendremos que tomar la dirección que nos dá junto al cerficiado y con ella dirigírnos a la aplicación web instalada en nuestro EC2.</p>
-
-<p>Si todos los pasos que hemos estado siguiendo se han realizado correctamente, nos debería indicar que la página es segura en el candado a la izquieda de la dirección.</p>
-
-<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica4/Certificado_web_2.png" alt="Error" class="center" width="500px" /></p>
-
-<p>La dirección del dominio que hemos habilitado es “iaw-practica4.ddns.net”</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[iaw-practica4 En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon]]></summary></entry></feed>
+<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica3/Captura10RH.png" alt="Error" class="center" width="400px" /></p>
+:ET

@@ -1,0 +1,47 @@
+I"�	<p>iaw-practica4
+En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon</p>
+
+<p>Para esta practica vamos a necesitar:</p>
+
+<p>La IP publica de nuestra instancia EC2.</p>
+
+<p>Un correo electronico: en mi caso he utilizado “rodalmar821@gmail.com”.</p>
+
+<p>Registrar un nombre de dominio: He utilizado la página web “N”O-IP”.</p>
+
+<p>Una vez reunidos estos requisitos, deberemos de instalar Certbot en la instancia de EC2 por medio de comandos:</p>
+
+<p>set -x</p>
+
+<p>#Realizamos la instalación y actualización de snapd.
+sudo snap install core</p>
+
+<p>sudo snap refresh core</p>
+
+<p>#Eliminamos si existiene alguna instalación previa de certbot con apt.
+sudo apt-get remove certbot</p>
+
+<p>#Instalamos el cliente de Certbot con snapd y automatizamos el proceso.
+sudo certbot –apache -m rodalmar821@gmail.com –agree-tos –no-eff-email -d iaw-practica4.ddns.net</p>
+
+<p>#Creamos una alias para el comando certbot.
+sudo ln -s /snap/bin/certbot /usr/bin/certbot</p>
+
+<h1 id="obtenemos-el-certificado-y-configuramos-el-servidor-web-apache">Obtenemos el certificado y configuramos el servidor Web Apache.</h1>
+<p>#De no haber automatizado el script de arriba tendremos que poner nuestro correo a mano, indicar “Yes” en la primera opción, indicar “No” en la segunda y poner el dominio “iaw-practica4.ddns.net” al final. Pero si lo automatizamos no sera necesario.
+sudo certbot –apache</p>
+
+<h1 id="lo-ajustamos-para-que-renueve-el-dominio-cuando-se-vaya-a-agotar-el-tiempo">Lo ajustamos para que renueve el dominio cuando se vaya a agotar el tiempo</h1>
+<p>systemctl list-timers
+Al terminar nos dará el certificado con la dirección del dominio de esta manera:</p>
+
+<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica4/Certificado_web1.png" alt="Error" class="center" width="500px" /></p>
+
+<p>Para llegar a nuestro objetivo final, tendremos que tomar la dirección que nos dá junto al cerficiado y con ella dirigírnos a la aplicación web instalada en nuestro EC2.</p>
+
+<p>Si todos los pasos que hemos estado siguiendo se han realizado correctamente, nos debería indicar que la página es segura en el candado a la izquieda de la dirección.</p>
+
+<p><img src="https://rodalmar82.github.io/iaw-jeykill//images/practica4/Certificado_web_2.png" alt="Error" class="center" width="500px" /></p>
+
+<p>La dirección del dominio que hemos habilitado es “iaw-practica4.ddns.net”</p>
+:ET
