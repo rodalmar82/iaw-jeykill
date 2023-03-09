@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "Practica04"
+date:   2023-03-09 13:15:34 -0600
+categories: jekyll update
+---
+iaw-practica4
+En esta práctica habilitaremos el protocolo HTTPS en un sitio web ejecutado en nuestra instancia EC2 de Amazon
+
+Para esta practica vamos a necesitar:
+
+La IP publica de nuestra instancia EC2.
+
+Un correo electronico: en mi caso he utilizado "rodalmar821@gmail.com".
+
+Registrar un nombre de dominio: He utilizado la página web "N"O-IP".
+
+Una vez reunidos estos requisitos, deberemos de instalar Certbot en la instancia de EC2 por medio de comandos:
+
+set -x
+
+#Realizamos la instalación y actualización de snapd.
+sudo snap install core
+
+sudo snap refresh core
+
+#Eliminamos si existiene alguna instalación previa de certbot con apt.
+sudo apt-get remove certbot
+
+#Instalamos el cliente de Certbot con snapd y automatizamos el proceso.
+sudo certbot --apache -m rodalmar821@gmail.com --agree-tos --no-eff-email -d iaw-practica4.ddns.net
+
+#Creamos una alias para el comando certbot.
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+# Obtenemos el certificado y configuramos el servidor Web Apache. 
+#De no haber automatizado el script de arriba tendremos que poner nuestro correo a mano, indicar "Yes" en la primera opción, indicar "No" en la segunda y poner el dominio "iaw-practica4.ddns.net" al final. Pero si lo automatizamos no sera necesario.
+sudo certbot --apache
+
+# Lo ajustamos para que renueve el dominio cuando se vaya a agotar el tiempo
+systemctl list-timers
+Al terminar nos dará el certificado con la dirección del dominio de esta manera:
+
+![Error]({{ site.url }}/images/practica4/Certificado_web1.png){: .center}{:width="500px"}
+
+
+Para llegar a nuestro objetivo final, tendremos que tomar la dirección que nos dá junto al cerficiado y con ella dirigírnos a la aplicación web instalada en nuestro EC2.
+
+Si todos los pasos que hemos estado siguiendo se han realizado correctamente, nos debería indicar que la página es segura en el candado a la izquieda de la dirección.
+
+![Error]({{ site.url }}/images/practica4/Certificado_web_2.png){: .center}{:width="500px"}
+
+
+La dirección del dominio que hemos habilitado es "iaw-practica4.ddns.net"
