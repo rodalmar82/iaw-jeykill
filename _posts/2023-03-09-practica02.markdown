@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Practica03"
+title:  "Practica02"
 date:   2023-03-09 13:15:34 -0600
 categories: jekyll update
 ---
