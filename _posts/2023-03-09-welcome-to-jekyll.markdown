@@ -14,7 +14,7 @@ Dentro de AWS Academy creamos una nueva estancia.
 
 Le tendremos que asignar un nombre, en aplicaciones escogeremos Red Hat y en el tipo de instancia tendremos que escoger una que posea al menos 2 GB de memoria.  
 
- La llave que escogeremos será Vodkey y abriremos los puertos SSH, HTTPS y HTTP.
+La llave que escogeremos será Vodkey y abriremos los puertos SSH, HTTPS y HTTP.
 
 
 
@@ -31,16 +31,16 @@ A la estancia que acabamos de crear deberemos de asignarle una IP elastica.
 
 Abrimos Virtual Box y dentro del explorador remoto agregamos la nueva estancia con la clave que podemos encontrar conectando con la instancia en la sección SSH client.
 
- ![Error]({{ site.url }}/images/practica3/Captura4RH.png){: .center}{:width="500px"}
+![Error]({{ site.url }}/images/practica3/Captura4RH.png){: .center}{:width="500px"}
 
- ## 4º Paso: Conexión con cliente SSH
+## 4º Paso: Conexión con cliente SSH
 
- Dentro de Virtual Box conectamos con el cliente SSH haciendo click en la esquina verde inferior izquierda. Deberemos marcar que queremos trabajar con Linux y poner la dirección del cliente.
+Dentro de Virtual Box conectamos con el cliente SSH haciendo click en la esquina verde inferior izquierda. Deberemos marcar que queremos trabajar con Linux y poner la dirección del cliente.
 
 ![Error]({{ site.url }}/images/practica3/Captura5RH.png){: .center}{:width="400px"}
 
 
- ## 5º Paso: Actualización y conexión con Github
+## 5º Paso: Actualización y conexión con Github
 
 Una vez hemos accedido, ya podemos trabajar con el terminal.
 
@@ -66,9 +66,9 @@ Podrémos comprobar el cambio con el comando:
 ```
 Por último enlazaremos virtual Box con un clon de nuestro repositorio de Git hub con el comando:  
 
- **git clone https:// github.com/Nombre_de_Repositorio/taller-git-github.git**
+**git clone https:// github.com/Nombre_de_Repositorio/taller-git-github.git**
 
- Tras hacerlo, una carpeta con el nombre del repositorio debería de haber aparecido en el árbol de la izquierda.
+Tras hacerlo, una carpeta con el nombre del repositorio debería de haber aparecido en el árbol de la izquierda.
 
 
 ## 6º Paso: Creación de las carpetas
@@ -80,7 +80,7 @@ Dentro de php crearemos un archivo llamado **info.php** y dentro de script crear
 Será dentro de lamp_tools.sh donde escribiremos los comandos que automatizarán las instalaciones.
 
 
- ![Error]({{ site.url }}/images/practica3/Captura6RH.png){: .center}{:width="300px"}
+![Error]({{ site.url }}/images/practica3/Captura6RH.png){: .center}{:width="300px"}
 
 ## 7º Paso: Creación del script
 
@@ -181,14 +181,14 @@ chmod a+x lamp_tools.sh
 
 ![Error]({{ site.url }}/images/practica3/Captura8RH.png){: .center}{:width="500px"}
 
-  ## Paso final: Ejecutamos el script
+## Paso final: Ejecutamos el script
 
-  Para ejecutarlo deberemos de  ejecutar dentro del directorio iaw-practica02 en el terminal el comando: 
-  ```bash
-  sudo ./lamp_tools.sh
-  ```
+Para ejecutarlo deberemos de  ejecutar dentro del directorio iaw-practica02 en el terminal el comando: 
+```bash
+sudo ./lamp_tools.sh
+```
 
   
- ![Error]({{ site.url }}/images/practica3/Captura9RH.png){: .center}{:width="400px"}
+![Error]({{ site.url }}/images/practica3/Captura9RH.png){: .center}{:width="400px"}
 
- ![Error]({{ site.url }}/images/practica3/Captura10RH.png){: .center}{:width="400px"}
+![Error]({{ site.url }}/images/practica3/Captura10RH.png){: .center}{:width="400px"}
